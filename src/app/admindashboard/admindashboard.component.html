@@ -1,0 +1,118 @@
+<div class="dashboard">
+
+  <!-- Top Navbar -->
+  <header class="navbar">
+    <h2 class="logo">Welcome Admin</h2>
+    <div class="nav-icons">
+      <i class="fas fa-bell"></i>
+      <i class="fas fa-user-circle"></i>
+      <button type="button" class="btn btn-primary" (click)="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="content">
+
+    <!-- ===================== EVENTS ===================== -->
+    <section class="card">
+      <h3 class="section-title">Add Event</h3>
+      <div class="form-group">
+        <input type="text" #eventName placeholder="Enter event name" class="form-input">
+        <button class="btn btn-primary" (click)="addEventManual(eventName.value)">Add Event</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3 class="section-title">Events List</h3>
+      <div *ngFor="let event of eventCategories" class="list-item">
+        <span>{{ event.name }}</span>
+        <button class="btn btn-danger" (click)="deleteEvent(event.eventCategoryId, event.name)">
+          Delete
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================== VENDORS ===================== -->
+    <section class="card">
+      <h3 class="section-title">Add Vendor</h3>
+      <div class="form-group">
+        <input type="text" #vendorName placeholder="Vendor Name" class="form-input">
+        <input type="text" #vendorDescription placeholder="Description" class="form-input">
+        <input type="text" #vendorContact placeholder="Contact Info" class="form-input">
+        <input type="text" #vendorLocation placeholder="Location" class="form-input">
+
+        <select #vendorIsActive class="form-input">
+          <option value="true">Active</option>
+          <option value="false">Inactive</option>
+        </select>
+
+        <select #eventCategoryId class="form-input">
+          <option value="" disabled selected>Select Event Category</option>
+          <option *ngFor="let event of eventCategories" [value]="event.eventCategoryId">
+            {{ event.name }}
+          </option>
+        </select>
+
+        <button class="btn btn-primary"
+          (click)="addVendorManual(
+            vendorName.value,
+            vendorDescription.value,
+            vendorContact.value,
+            vendorLocation.value,
+            vendorIsActive.value,
+            eventCategoryId.value
+          )">
+          Add Vendor
+        </button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3 class="section-title">Vendors List</h3>
+      <div *ngFor="let vendor of vendors" class="list-item">
+        <span>{{ vendor.name }} ({{ vendor.contactInfo }})</span>
+        <button class="btn btn-danger" (click)="deleteVendorManual(vendor.vendorId, vendor.name)">
+          Delete
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================== VENDOR SERVICES ===================== -->
+    <section class="card">
+      <h3 class="section-title">Add Vendor Service</h3>
+      <div class="form-group">
+        <input type="text" #serviceName placeholder="Service Name" class="form-input">
+        <input type="text" #serviceDescription placeholder="Service Description" class="form-input">
+        <input type="number" #price placeholder="Price" class="form-input">
+    
+        <select #vendorId class="form-input">
+          <option value="" disabled selected>Select Vendor</option>
+          <option *ngFor="let vendor of vendors" [value]="vendor.vendorId">
+            {{ vendor.name }}
+          </option>
+        </select>
+    
+        <button class="btn btn-primary"
+          (click)="addVendorServicesManual(
+            serviceName.value,
+            vendorId.value,
+            serviceDescription.value,
+            price.valueAsNumber
+          )">
+          Add Vendor Service
+        </button>
+      </div>
+    </section>
+    
+
+    <section class="card">
+      <h3 class="section-title">Vendor Services List</h3>
+      <div *ngFor="let service of vendorServices" class="list-item">
+        {{ service.serviceName }} - {{ service.serviceDescription }} (₹{{ service.price }})
+        <button class="btn btn-danger" 
+        (click)="deleteVendorService(service.vendorServicesId, service.serviceName)">Delete</button>
+      </div>
+    </section>
+
+  </main>
+</div>
