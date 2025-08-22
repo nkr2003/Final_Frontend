@@ -1,1 +1,11 @@
-<p>userdashboard works!</p>
+<app-navbar></app-navbar>
+<div class="dashboard">
+    <h2>Event Categories</h2>
+    <div class="cards-container">
+      <div *ngFor="let event of events" class="card" (click)="openEvent(event.eventCategoryId)">
+        <h3>{{ event.name }}</h3>
+        <p>{{ event.description }}</p>
+      </div>
+    </div>
+  </div>
+  

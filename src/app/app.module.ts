@@ -8,8 +8,12 @@ import { RegisterComponent } from './register/register.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { UserDashboardComponent } from './userdashboard/userdashboard.component';
 import { HomeComponent } from './home/home.component';
-import { UserdashboardComponent } from './userdashboard/userdashboard.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { VendorComponent } from './vendor/vendor.component';
+import { CommonModule } from '@angular/common';
+import { AddToCartPageComponent } from './add-to-cart-page/add-to-cart-page.component';
 // import { CartComponent } from './cart/cart.component';
 
 @NgModule({
@@ -18,16 +22,19 @@ import { UserdashboardComponent } from './userdashboard/userdashboard.component'
     LoginComponent,
     RegisterComponent,
     AdmindashboardComponent,
-    // UserdashboardComponent, // <-- move here
+    UserDashboardComponent, 
     HomeComponent,
-    UserdashboardComponent,
+    NavbarComponent,
+    VendorComponent,
+    AddToCartPageComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
