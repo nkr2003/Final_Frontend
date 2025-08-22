@@ -1,0 +1,52 @@
+<div class="vendor-container">
+  <h2>Vendors for Event "{{ eventName }}"</h2>
+
+
+  <!-- Vendors List -->
+  <div *ngIf="vendors.length > 0; else noVendors">
+    <div *ngFor="let vendor of vendors" class="vendor-card">
+      <h3>{{ vendor.name }}</h3>
+      <p><strong>Description:</strong> {{ vendor.description }}</p>
+      <p><strong>Contact:</strong> {{ vendor.contactInfo }}</p>
+      <p><strong>Location:</strong> {{ vendor.location }}</p>
+
+      <!-- Button to load services -->
+      <button (click)="viewServices(vendor)">
+        View Services
+      </button>
+
+      <!-- Services Section (only shows for the selected vendor) -->
+      <div *ngIf="selectedVendor?.vendorId === vendor.vendorId">
+        <h4>Services</h4>
+
+        <div *ngIf="selectedVendorServices.length > 0; else noServices">
+          <div *ngFor="let service of selectedVendorServices" class="service-card">
+            <h5>{{ service.serviceName }}</h5>
+            <p>{{ service.serviceDescription }}</p>
+            <p><strong>Price:</strong> ₹{{ service.price }}</p>
+            <label>
+              <input type="checkbox" [(ngModel)]="service.selected" />
+              Select Service
+            </label>
+          </div>
+          
+          <!-- Add to Cart Button -->
+          <button (click)="addToCart(vendor)">
+            Add Selected Services to Cart
+          </button>
+          
+        </div>
+
+        <!-- No services fallback -->
+        <ng-template #noServices>
+          <p>No services available for this vendor.</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <!-- No vendors fallback -->
+  <ng-template #noVendors>
+    <p>No vendors found for this event.</p>
+  </ng-template>
+</div>
