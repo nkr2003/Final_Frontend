@@ -1,0 +1,139 @@
+/* === Container Styling === */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* === Title === */
+.title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
+  font-weight: bold;
+}
+
+/* === Payment Form === */
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.input,
+select,
+input[type="number"] {
+  padding: 0.9rem;
+  border-radius: 10px;
+  border: 1px solid #cbd5e0;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.input:focus,
+select:focus,
+input[type="number"]:focus {
+  border-color: #3182ce;
+  box-shadow: 0 0 6px rgba(49, 130, 206, 0.3);
+}
+
+/* === Submit Button === */
+.submit-btn {
+  background: #38a169;
+  color: #fff;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.submit-btn:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #2f855a;
+  transform: translateY(-2px);
+}
+
+/* === Payments List Section === */
+.payments-list {
+  margin-top: 2.5rem;
+}
+
+.payments-list h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+/* === Payments Table === */
+.payments-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.payments-table th,
+.payments-table td {
+  border: 1px solid #e2e8f0;
+  padding: 0.9rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.payments-table th {
+  background: #f7fafc;
+  color: #2d3748;
+  font-weight: 700;
+}
+
+.payments-table tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.payments-table tbody tr:hover {
+  background: #edf2f7;
+  transition: background 0.3s;
+}
+
+/* === Responsive Styling === */
+@media (max-width: 600px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .payments-table th,
+  .payments-table td {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}

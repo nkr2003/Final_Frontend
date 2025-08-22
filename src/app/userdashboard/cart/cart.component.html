@@ -1,0 +1,47 @@
+<div class="cart-container">
+    <h2 class="cart-title">🛒 Your Cart</h2>
+  
+    <button class="back-btn" (click)="returnToBooking()">← Return to Booking</button>
+  
+    <!-- Events Section -->
+    <div class="section" *ngIf="eventItems.length > 0">
+      <h3 class="section-title">Events</h3>
+  
+      <div class="card" *ngFor="let event of eventItems">
+        <img [src]="event.imageUrl || 'assets/images/default-event.jpg'" alt="{{event.name}}" class="card-img">
+        <div class="card-content">
+          <h4>{{ event.name }}</h4>
+          <p><strong>Date:</strong> {{ event.date | date }}</p>
+          <p class="price">₹{{ event.price | number }}</p>
+          <button class="remove-btn" (click)="removeEvent(event)">❌ Remove</button>
+        </div>
+      </div>
+  
+      <p class="subtotal">Events Total: <span>₹{{ getEventsTotal() | number }}</span></p>
+    </div>
+  
+    <!-- Vendor Services Section -->
+    <div class="section" *ngIf="vendorServices.length > 0">
+      <h3 class="section-title">Vendor Services</h3>
+  
+      <div class="card" *ngFor="let service of vendorServices">
+        <img [src]="service.imageUrl || 'assets/images/default-vendor.jpg'" alt="{{service.name}}" class="card-img">
+        <div class="card-content">
+          <h4>{{ service.name }}</h4>
+          <p><strong>Provider:</strong> {{ service.provider }}</p>
+          <p class="price">₹{{ service.price | number }}</p>
+          <button class="remove-btn" (click)="removeVendorService(service)">❌ Remove</button>
+        </div>
+      </div>
+  
+      <p class="subtotal">Vendor Services Total: <span>₹{{ getVendorTotal() | number }}</span></p>
+    </div>
+  
+    <!-- Grand Total -->
+    <div class="grand-total">
+      <h3>Grand Total: <span>₹{{ getGrandTotal() | number }}</span></h3>
+    </div>
+  
+    <button class="pay-btn" (click)="goToPayments()">💳 Go to Payments</button>
+  </div>
+  

@@ -1,0 +1,70 @@
+/* Gradient Header */
+.header {
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  /* Container Alignment */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Logo */
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
+  }
+  
+  .logo:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+  
+  /* Navigation */
+  .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-list li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Hover effect */
+  .nav-list li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #f1f1f1;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive Navbar */
+  @media (max-width: 768px) {
+    .nav-list {
+      gap: 15px;
+    }
+    .logo {
+      font-size: 1.4rem;
+    }
+  }
+  

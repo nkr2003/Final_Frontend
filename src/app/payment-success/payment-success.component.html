@@ -1,0 +1,11 @@
+<div class="success-container">
+    <div class="loader" *ngIf="!showSuccess"></div>
+  
+    <div class="success-card" *ngIf="showSuccess">
+      <div class="tick">&#10004;</div>
+      <h1>Payment Successful!</h1>
+      <p>Thank you for your payment.</p>
+      <button (click)="goToHome()">🏠 Go to Home</button>
+    </div>
+  </div>
+  

@@ -1,0 +1,94 @@
+<div class="container">
+    <h2 class="title">💳 Payments</h2>
+  
+    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="payment-form">
+  
+      <!-- Amount -->
+      <div class="form-group">
+        <label>Amount:</label>
+        <input type="number" formControlName="amount" readonly class="input" />
+      </div>
+  
+      <!-- Payment Method -->
+      <div class="form-group">
+        <label>Method:</label>
+        <select formControlName="method" class="input">
+          <option value="">--Select Method--</option>
+          <option value="CreditCard">💳 Credit Card</option>
+          <option value="DebitCard">💳 Debit Card</option>
+          <option value="UPI">📱 UPI</option>
+        </select>
+      </div>
+  
+      <!-- Card Details -->
+      <div *ngIf="showCardFields" class="card-details">
+  
+        <!-- Card Number -->
+        <div class="form-group">
+          <label>Card Number:</label>
+          <input type="text" formControlName="cardNumber" class="input" maxlength="16" placeholder="1234 5678 9012 3456" />
+          <p *ngIf="paymentForm.get('cardNumber')?.touched && paymentForm.get('cardNumber')?.invalid" class="error-msg">
+            Card number must be 16 digits
+          </p>
+        </div>
+  
+        <!-- Expiry -->
+        <div class="form-group">
+          <label>Expiry (MM/YY):</label>
+          <input type="text" formControlName="expiry" class="input" maxlength="5" placeholder="MM/YY" />
+          <p *ngIf="paymentForm.get('expiry')?.touched && paymentForm.get('expiry')?.invalid" class="error-msg">
+            Expiry must be in MM/YY format
+          </p>
+        </div>
+  
+        <!-- CVV -->
+        <div class="form-group">
+          <label>CVV:</label>
+          <input type="password" formControlName="cvv" class="input" maxlength="3" placeholder="123" />
+          <p *ngIf="paymentForm.get('cvv')?.touched && paymentForm.get('cvv')?.invalid" class="error-msg">
+            CVV must be 3 digits
+          </p>
+        </div>
+  
+        <!-- Add Card Button -->
+        <button type="button" class="add-card-btn" (click)="addCard()">
+          ✅ Add Card
+        </button>
+  
+        <p *ngIf="cardAdded" class="success-msg">Card added successfully!</p>
+      </div>
+  
+      <!-- Submit Payment Button -->
+      <button type="submit" class="submit-btn" [disabled]="!paymentForm.valid || (showCardFields && !cardAdded)">
+        💰 Submit Payment
+      </button>
+    </form>
+  
+    <hr />
+  
+    <!-- Payment History Table -->
+    <div *ngIf="payments.length > 0" class="payments-list">
+      <h3>📜 Payment History</h3>
+      <table class="payments-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Amount</th>
+            <th>Method</th>
+            <th>Paid At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of payments">
+            <td>{{ p.paymentId }}</td>
+            <td>{{ p.userId }}</td>
+            <td>{{ p.amount | currency:'INR' }}</td>
+            <td>{{ p.method }}</td>
+            <td>{{ p.paidAt | date:'short' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

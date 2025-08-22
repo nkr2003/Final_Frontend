@@ -1,0 +1,67 @@
+<header>
+  <div class="container">
+    <h1 class="logo">Event Management</h1>
+    <nav>
+      <ul>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/login">Login</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a routerLink="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="register-container">
+    <h2>Register</h2>
+  
+    <form (ngSubmit)="onRegister()">
+      <!-- Username -->
+      <input 
+        type="text" 
+        [(ngModel)]="registerData.username" 
+        name="username" 
+        placeholder="Username" 
+        required
+      >
+  
+      <!-- Email -->
+      <input 
+        type="email" 
+        [(ngModel)]="registerData.email" 
+        name="email" 
+        placeholder="Email" 
+        required
+      >
+  
+      <!-- Password -->
+      <input 
+        type="password" 
+        [(ngModel)]="registerData.passwordHash" 
+        name="passwordHash" 
+        placeholder="Password" 
+        required
+      >
+  
+      <!-- Phone Number -->
+      <input 
+        type="tel" 
+        [(ngModel)]="registerData.phoneNumber" 
+        name="phoneNumber" 
+        placeholder="Phone Number" 
+        required
+      >
+  
+      <!-- Role -->
+      <select [(ngModel)]="registerData.roleId" name="roleId" required>
+        <option [ngValue]="null" disabled>Select Role</option>
+        <option [ngValue]="1">Admin</option>
+        <option [ngValue]="2">User</option>
+      </select>
+  
+      <!-- Submit -->
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a routerLink="/login">Login here</a></p> 
+    <p>{{ message }}</p>
+  </div>

@@ -1,0 +1,80 @@
+.success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f4f8;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Loader animation */
+  .loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #38a169;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Success card */
+  .success-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Tickmark */
+  .tick {
+    font-size: 4rem;
+    color: #38a169;
+    margin-bottom: 1rem;
+    animation: scaleTick 0.5s ease-out;
+  }
+  
+  @keyframes scaleTick {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); }
+  }
+  
+  .success-card h1 {
+    color: #2d3748;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .success-card p {
+    color: #4a5568;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .success-card button {
+    background: #3182ce;
+    color: #fff;
+    border: none;
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  .success-card button:hover {
+    background: #2b6cb0;
+    transform: translateY(-2px);
+  }
+  
